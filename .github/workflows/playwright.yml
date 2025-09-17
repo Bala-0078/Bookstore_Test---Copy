@@ -24,7 +24,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Experian Test
-        run: npx cucumber-js feature/experian/loancalculate.feature --require feature/step-definition/experian/experian.step.js
+        run: cucumber-js feature/experian/loancalculate.feature --require feature/step-definition/experian/experian.step.js --format json:cucumber-report.json && node generate-cucumber-report.js
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
